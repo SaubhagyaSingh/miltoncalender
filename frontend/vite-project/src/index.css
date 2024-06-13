@@ -1,6 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  scroll-behavior: smooth;
+}
+
 html {
     scroll-behavior: smooth;
+  }
+
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
   }

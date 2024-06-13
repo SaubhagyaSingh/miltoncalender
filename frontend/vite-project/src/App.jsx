@@ -5,7 +5,7 @@ import Hero from './pages/Hero'
 function App() {
 
   return (
-    <div className='bg-[#f7f7f7]'>
+    <div className='bg-[#f7f7f7] scroll-smooth'>
       <Navbar  classname="fixed"/>
       <Hero />
     </div>
