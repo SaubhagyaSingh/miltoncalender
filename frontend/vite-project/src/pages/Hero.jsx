@@ -76,8 +76,25 @@ function Hero() {
   ];
   const services = activeDeal === 'deal1' ? deal1Services : deal2Services;
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('blur-in');
+          entry.target.classList.add('clear');
+        } else {
+          entry.target.classList.remove('clear');
+          entry.target.classList.add('blur-in');
+        }
+      });
+    });
+  
+    // Observe each element with the class 'myDiv'
+    document.querySelectorAll('.myDiv').forEach(el => observer.observe(el));
+  }, []);
+
   return (
-    <div className='mt-24 overflow-x-hidden '>
+    <div className='mt-24 overflow-x-hidden blur-in myDiv'>
       
       {/* the central things */}
       <div className='flex gap-1 flex-col justify-center items-center '>
@@ -86,7 +103,7 @@ function Hero() {
        <Subheading text="An another way to manage Time." ></Subheading>
         </div>
         {/* title */}
-        <div className='flex   text-[42px] font-bold'>
+        <div className='flex  text-[42px] font-bold'>
     Your new favorite calendar {"  "} 
     < img src={calendar} className="ml-2 w-12 h-12 mt-2" />
      app
@@ -106,11 +123,11 @@ function Hero() {
           <Emojistack />
         </div>
 
-        <div className='mt-24 h-auto w-[800px]'><img src={s1}></img></div>
+        <div   className='myDiv mt-28 h-auto w-[800px] blur-in'><img src={s1}></img></div>
         <div className='p-2 mt-36 mb-4'><Subheading text="Our main Features🙇‍♂️"></Subheading></div>
         <div><Heading text="Discover your New"></Heading><Heading text="Superpowers"></Heading></div>
 
-        <div className=' flex items-start mt-36 gap-36'>
+        <div className=' flex items-start mt-36 gap-36 myDiv blur-in'>
           <div className='flex flex-col'>
             <div><Chatbox text="Seamless Scheduling"></Chatbox></div>
             <div className='text-[48px] font-bold leading-[50px]'>Focus on what</div>
@@ -133,7 +150,7 @@ function Hero() {
         </div>
 
 
-        <div className='mt-64 flex'>
+        <div className='mt-64 flex myDiV'>
           <div><img className='h-[500px] w-[500px]' src={s3}></img></div>
           <div className='ml-4'>
             <div className='text-black bg-[#eed0b6] text-center text-[16px] p-3 font-bold rounded-full max-w-[250px] max-h-[45px]'>
@@ -154,7 +171,7 @@ function Hero() {
 
 
 
-        <div className=' flex items-start mt-36 gap-36'>
+        <div className=' flex items-start mt-36 gap-36 myDiv'>
           <div className='flex flex-col'>
             <div><Chatbox text="Seamless Scheduling"></Chatbox></div>
             <div className='text-[48px] font-bold'>Focus on what</div>
@@ -175,7 +192,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className='mt-64 flex'>
+        <div className='mt-64 flex myDiv'>
           <div><img className='h-[500px] w-[500px]' src={s5}></img></div>
           <div className='ml-4'>
             <div className='text-black bg-[#eed0b6] text-center text-[16px] p-3 font-bold rounded-full max-w-[250px] max-h-[45px]'>
@@ -196,7 +213,7 @@ function Hero() {
         </div>
         <div className='p-2 mt-64 mb-4'><Subheading text="And so much more ...💼"></Subheading></div>
 
-      <div className='flex flex-col'>
+      <div className='flex flex-col myDiv'>
         <div><Heading text="Our Features to make your"></Heading></div>
         <div><Heading text="life Easier"></Heading></div>
         <div className='flex'>
@@ -212,7 +229,7 @@ function Hero() {
       </div>
         </div>
 
-      <div className='mt-12'>
+      <div className='mt-12 myDiv'>
       <Subheading text="They already love our products😍"></Subheading>
       </div>
       <div>
@@ -220,7 +237,7 @@ function Hero() {
         <div><Heading text="about us"></Heading></div>
       </div>
 
-      <div className='m-12'>
+      <div className='m-12 myDiv'>
       <div className='m-12'>
     <ReviewContainer></ReviewContainer>
       </div>
@@ -236,11 +253,12 @@ function Hero() {
       </div>
       
       
-      <div>
+      <div className='myDiv'>
         <div>
           <Heading text="Find the best plan for"></Heading>
           <Heading text="your needs"></Heading>
         </div>
+
         <div className="bg-gray-100 min-h-screen flex flex-col items-center py-10">
         <ToggleButtons activeDeal={activeDeal} setActiveDeal={setActiveDeal} />
         <div className="flex  items-center space-y-4">
@@ -254,7 +272,7 @@ function Hero() {
           <div>
             <div><Heading text="Frequently Asked Questions"></Heading></div>
           </div>
-          <div>
+          <div className='myDiv'>
           <div className='mb-16 mt-12'>
             <Dropdown question="Can i cancel my subscription?"></Dropdown>
           </div>
@@ -269,7 +287,7 @@ function Hero() {
           </div>
           </div>
           <div className='mt-36'><Subheading text="Last call Baby! 🚀"></Subheading></div>
-          <div>
+          <div className='myDiv'>
             <div><Heading text="Ready to start?"></Heading></div>
             <div className='text-gray-400 flex text-center text-[20px]'>Here is your last chance to explain how cool your app is. Focus on the benefits for<br></br> your users,not on the features</div>
             <div className='flex items-center justify-center mb-16 mt-16'><Button></Button></div>

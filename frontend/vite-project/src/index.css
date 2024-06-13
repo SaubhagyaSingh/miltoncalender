@@ -10,13 +10,13 @@ html {
     scroll-behavior: smooth;
   }
 
-  .fade-enter {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 300ms, transform 300ms;
+  .blur-in {
+    filter: blur(5px);
+    transition: filter 2s ease-in-out;
   }
   
-  .fade-enter-active {
-    opacity: 1;
-    transform: translateY(0);
+  .clear {
+    filter: blur(0);
+    transition: filter 0.5s ease-in-out;
+
   }
