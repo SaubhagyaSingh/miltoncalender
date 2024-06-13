@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import calendar from "../../public/icons8-calendar.gif"
 import Button from '../components/Button'
 import Subtitle from '../components/Subtitle'
@@ -29,26 +29,14 @@ import ToggleButtons from '../components/ToggleButtons';
 import ServiceCard from '../components/ServiceCard';
 import Dropdown from '../components/Dropdown';
 import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { CSSTransition } from 'react-transition-group';
-
-
+import { useEffect,useState } from 'react';
 
 
 function Hero() {
 
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Change this to false if you want the animation to trigger again whenever it comes in view
-  });
-  useEffect(() => {
-    if (inView) {
-      document.documentElement.style.scrollBehavior = 'smooth';
-    }
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-    };
-  }, [inView]);
+
+
+  
   const [activeDeal, setActiveDeal] = useState('deal1');
 
   const deal1Services = [
@@ -89,8 +77,7 @@ function Hero() {
   const services = activeDeal === 'deal1' ? deal1Services : deal2Services;
 
   return (
-    <div className='mt-24 overflow-x-hidden ' ref={ref}>
-      <CSSTransition in={inView} timeout={300} classNames="fade" unmountOnExit>
+    <div className='mt-24 overflow-x-hidden '>
       
       {/* the central things */}
       <div className='flex gap-1 flex-col justify-center items-center '>
@@ -298,8 +285,6 @@ function Hero() {
             <Footer></Footer>
           </div>
       </div>
-      </CSSTransition>
-
     </div>
   )
 }
